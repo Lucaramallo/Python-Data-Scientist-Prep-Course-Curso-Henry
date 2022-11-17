@@ -1,3 +1,4 @@
+![data scientist print caratula](https://user-images.githubusercontent.com/95667827/202559113-a20104e3-dcfa-4fa1-b585-9f5acb246b3a.png)
 # Python-Prep-02---Variables-y-Tipos-de-Datos-Prep_Course_Homework_02.md
 abierto para quien quiera aprender!
 utilice la siguiente hoja de ruta...
