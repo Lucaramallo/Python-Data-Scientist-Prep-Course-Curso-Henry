@@ -1,1 +1,319 @@
+#Flujos de Control
 
+
+#1Crear una variable que contenga un elemento del conjunto de números enteros y
+#luego imprimir por pantalla si es mayor o menor a cero
+
+numero_entero = (7)
+
+if numero_entero > 0:
+    print(str(numero_entero) + (", es un número mayor que 0."))
+elif numero_entero < 0:
+    print(str(numero_entero) + (", es un número menor que 0."))
+else:
+    print(str(numero_entero) + (", es igual a 0."))
+
+
+
+
+#2Crear dos variables y un condicional que informe si son del mismo tipo de dato
+
+mi_nombre = "Luca" #La variable indica mi nombre.
+miedad = 27 #La variable indica mi edad.
+
+if mi_nombre  == miedad:
+    print('Las variables son iguales')
+else:
+    print('Las variables no son del mismo tipo de dato:')
+    print(str(type(mi_nombre )) + ' Este es el tipo de variable of mi_nombre.')
+    print(str(type(miedad)) + ' Este es el tipo de variable of miedad.')
+
+
+
+
+
+#3Para los valores enteros del 1 al 20, imprimir por pantalla si es par o impar
+
+valoresenteros_del_1_20 = 1
+
+for valoresenteros_del_1_20 in range(1, 21):
+    if valoresenteros_del_1_20 % 2 == 0:
+        print('El número ', str(valoresenteros_del_1_20), ' es par')
+    else:
+        print('El número ', str(valoresenteros_del_1_20), ' es impar')
+
+
+
+#4En un ciclo for mostrar para los valores entre 0 y 5 el resultado de elevarlo a la potencia igual a 3
+
+x = 0
+for x in range(0, 6):
+    x3 = x**3
+    print(str(x3) + ' Será el resultado de elevar ' + str(x) + ' al cubo.') 
+  
+
+#5Crear una variable que contenga un número entero y
+#realizar un ciclo for la misma cantidad de ciclos
+
+for numero_entero in range(0,numero_entero):
+    print('Ciclo N°' + str(numero_entero))
+
+
+#6Utilizar un ciclo while para #realizar el factorial de #un número guardado en una variable,
+#sólo si la #variable contiene un número entero mayor a 0
+
+n = 5                                           # Variable factorial
+if (type(n) == int):                            # Validacion del tipo de dato de entrada variable n debe cumplir con la condicion de ser int
+    if (n > 0):                                 # Condicion if
+        factorial = n                           # Variable factorial
+        while (n > 2):                          # While para el factorial del num
+            n =- 1                              # Reductor
+            factorial = factorial * n           # Operacion de multiplicacion factorial (*Se guardó otro tipo de dato en la variable)
+        print('El factorial es', factorial)     
+    else:
+        print('La variable no es mayor a cero')
+else:
+    print('La variable no es un entero')
+
+
+
+#7Crear un ciclo for dentro de un ciclo while
+
+ #mientras haya una cantidad menor a 9 autos en la playa de E; imprimir hay lugar y dejar entrar un auto; 
+ #si llega 9 imp no hay lugar; nno ingresan mas autos
+ #Definí un problema real para poder encaminarme mejor en el uso de la combinacion de ciclos.
+
+cant_de_autos = 0
+limite_superior = 9
+limite_inferior = 0
+
+while cant_de_autos < (int(1 + limite_superior)): 
+    print('ahi va uno!')
+    cant_de_autos = + 1
+
+    for cant_de_autos in range(int(limite_inferior),int(1 + limite_superior)):
+            
+        print('Hay lugar!' + ' Restarian de ocuparse: ' + str((limite_superior - cant_de_autos)) + ' lugares.')
+        print('Cantidad de lugares ocupados: '+ str(cant_de_autos))
+        print('Cantidad de plazas de estacionamiento habilitadas: '+ str( limite_superior))
+    break
+        
+print('No hay mas lugares disponibles, ')
+print('Cantidad de lugares ocupados: '+ str(cant_de_autos + 1))
+print('Cantidad de plazas de estacionamiento habilitadas: '+ str(1 + limite_superior))
+
+ 
+
+#8Crear un ciclo while dentro de un ciclo for
+#variables declaradas:
+edadpass_boliche = 18
+edadpass_VIP = 25
+edaduser = 15
+edadtope_boliche = 35
+
+#for = para cuando se cumpla la condicion...
+
+for edaduser in range(edaduser,edadtope_boliche):
+
+    if(edaduser <= edadpass_boliche):
+        print('processing...')
+        print('Get out little kid!')
+        print('Age declarated : ' + str(edaduser))
+        edaduser =+1
+    else :
+        
+        # while = mientras
+
+        while edaduser >= edadpass_VIP:
+            print("if you realy have " + str(edaduser) + ' You re full acces VIP')
+            edaduser =+1
+
+        while edaduser >= edadpass_boliche:
+            print('great, you can acces.. lets see if you reach the other category')
+            print('Age declarated : ' + str(edaduser))
+            edaduser =+1
+           
+
+
+
+
+
+#9Imprimir los números primos existentes entre 0 y 30    
+
+tope_rango=30
+n = 0
+primo = True
+while (n < tope_rango):
+    for div in range(2, n):
+        if (n % div == 0):
+            primo = False
+    if (primo):
+        print(str(n) + (':)'))
+    else:
+        primo = True
+    n += 1
+
+
+
+#10¿Se puede mejorar el proceso del punto 9? Utilizar las sentencias break y/ó continue para tal fin
+
+"""
+
+El break también nos permite alterar el comportamiento del while. En el ejemplo, la condición while True haría que la sección de código se ejecutara indefinidamente, pero al hacer uso del break, el bucle se romperá cuando x valga cero.
+
+>>> x = 5
+>>> while True:
+>>>     x -= 1
+>>>     print(x)
+>>>     if x == 0:
+>>>         break
+>>>     print("Fin del bucle")
+4
+3
+2
+1
+0
+Fin del bucle
+Por norma general, y salvo casos muy concretos, si ves un while True, es probable que haya un break dentro del bucle.
+
+Sentencia Continue
+El uso de continue al igual que el ya visto break, permite modificar el comportamiento de de los bucles while y for. Concretamente, continue se salta todo el código restante en la iteración actual y vuelve al principio en el caso de que aún queden iteraciones por completar. La diferencia entre el break y continue es que el continue no rompe el bucle, si no que pasa a la siguiente iteración saltando el código pendiente. En el siguiente ejemplo vemos como al encontrar la letra P se llama al continue, lo que hace que se salte el print(). Es por ello por lo que no vemos la letra P impresa en pantalla.
+
+>>> cadena = 'Python'
+>>> for letra in cadena:
+>>>     if letra == 'P':
+>>>         continue
+>>>     print(letra)
+y
+t
+h
+o
+n
+
+"""
+
+
+ciclos_con_break = 0
+tope_rango=30
+n = 0
+primo = True
+while (n < tope_rango):
+    for div in range(2, n):
+        if (n % div == 0):
+            primo = False
+            ciclos_con_break += 1
+            break
+    if (primo):
+        print(str(n) + (':)'))
+    else:
+        primo = True
+    n += 1
+print('Cantidad de ciclos: ' + str(ciclos_con_break))
+
+
+
+#11En los puntos 9 y 10, se diseño un código que encuentra números primos y además se lo optimizó.
+#  ¿Es posible saber en qué medida se optimizó?
+
+ciclos_sin_break = 0
+n = 0
+primo = True
+while (n < tope_rango):
+    for div in range(2, n):
+        ciclos_sin_break += 1
+        if (n % div == 0):
+            primo = False
+    if (primo):
+        print(n)
+    else:
+        primo = True
+    n += 1
+print('Cantidad de ciclos: ' + str(ciclos_sin_break))
+print('Diferencia de ciclos = ' + str(ciclos_sin_break - ciclos_con_break) )
+
+
+
+#12Si la cantidad de números que se evalúa es mayor a treinta, esa optimización crece?
+
+tope_rango2 = 100
+ciclos_sin_break = 0
+n = 0
+primo = True
+while (n < tope_rango2):
+    for div in range(2, n):
+        ciclos_sin_break += 1
+        if (n % div == 0):
+            primo = False
+    if (primo):
+        print(n)
+    else:
+        primo = True
+    n += 1
+print('Cantidad de ciclos: ' + str(ciclos_sin_break))
+diferencia_de_ciclos = (ciclos_sin_break - ciclos_con_break)
+print('Diferencia de ciclos = ' + str(diferencia_de_ciclos))
+print('RTA: Sí considerablemente.')
+
+cant_ciclos_x_cada_tope_rango_agregado = round((diferencia_de_ciclos)/(tope_rango2 -tope_rango),3)
+
+print('Aumento de la cantidad de ciclos por cada tope de rango agregado: ' + str(cant_ciclos_x_cada_tope_rango_agregado))
+
+
+
+#13Aplicando continue, armar un ciclo while que solo imprima los valores divisibles por 12,
+#  dentro del rango de números de 100 a 300
+"""Sentencia Continue
+El uso de continue al igual que el ya visto break, permite modificar el comportamiento de de los bucles while y for. Concretamente, continue se salta todo el código restante en la iteración actual y vuelve al principio en el caso de que aún queden iteraciones por completar. La diferencia entre el break y continue es que el continue no rompe el bucle, si no que pasa a la siguiente iteración saltando el código pendiente. En el siguiente ejemplo vemos como al encontrar la letra P se llama al continue, lo que hace que se salte el print(). Es por ello por lo que no vemos la letra P impresa en pantalla.
+
+>>> cadena = 'Python'
+>>> for letra in cadena:
+>>>     if letra == 'P':
+>>>         continue
+>>>     print(letra)
+y
+t
+h
+o
+n
+"""
+n = 99
+while(n <= 300):
+    n += 1
+    if (n % 12 != 0):
+        continue
+    print(n, ' es divisible por 12')
+
+
+#14Utilizar la función input() que permite hacer ingresos por teclado,
+#  para encontrar números primos y 
+# dar la opción al usario de buscar el siguiente
+
+
+n = 1
+sigue = 1
+primo = True
+while (sigue == 1):
+    for div in range(2, n):
+        if (n % div == 0):
+            primo = False
+            break
+    if (primo):
+        print(n)
+        print('¿Desea encontrar el siguiente número primo?')
+        if (input() != '1'):
+            print('Se finaliza el proceso')
+            break
+    else:
+        primo = True
+    n += 1
+
+
+#15Crear un ciclo while que encuentre dentro del rango de 100 a 300 el primer número divisible por 3 y
+# además múltiplo de 6 #6 y 3 son divisibles entre si
+
+n = 100
+while(n<=300):
+    if (n % 6 == 0):
+        print('El número es: ', str(n))
+        break
+    n += 1
