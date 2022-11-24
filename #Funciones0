@@ -1,0 +1,197 @@
+#Funciones0
+#1 Crear una función que reciba un número como parámetro 
+# y devuelva si True si es primo y False si no lo es
+
+#un numero primos cuando su resto de ser dividido solo da = 0 por si mismo y valor =1
+
+def verifica_primo(numero_analized):
+    es_primo = True
+    for iterador in range(2, numero_analized):
+        if numero_analized % iterador == 0:
+            es_primo = False
+            break
+    print(es_primo)
+
+
+verifica_primo(22)
+
+
+#2 Utilizando la función del punto 1, 
+# realizar otra función que reciba de parámetro 
+# una lista de números y devuelva sólo aquellos que 
+# son primos en otra lista
+
+def extrae_primos_de_lista(lista):
+    lista_primos = []
+    for elemento in lista:
+        if verifica_primo(int(elemento)):
+            lista_primos.append(elemento)
+    return lista_primos
+
+
+
+
+
+#3 Crear una función que al recibir una lista de números,
+#  devuelva el que más se repite y cuántas veces lo hace. 
+# Si hay más de un "más repetido", que devuelva cualquiera
+
+
+lista = [1,2,3,3,3,3,3,3,3,3,4,5,6,7,8,8,8,8,9]
+
+#devuelva el que más se repite
+
+
+def valor_modal(lista):                                             # 1. Define el nombre de la funcion                                                  # Declara 
+    lista_ya_analizados_VM = []                                     # 2. Crea Listas vacias 
+    lista_repeticiones_VM = []                                      
+    
+    if len(lista) == 0:                                             # 3. Verifica que las listas no estén vacias
+        return None
+
+    for elemento in lista:                                          # 4. Para ccuando el "elemento" aparezca en  "Lista":
+        
+        if elemento in lista_ya_analizados_VM:                      # 5. Si el elemento ya está en "lista_ya_analizados_VM":
+            i = lista_ya_analizados_VM.index(elemento)              # 6. Crea "i" (simple iterador) y lo "iguala" a "al index del "elemento" dentro de la lista de "ya analizados".
+            lista_repeticiones_VM[i] += 1                           # 7. Agrega un "+1" a la lista "Repeticiones" en el index correspondiente a "i", "i" cumple funcion de ser iterador, como mencionaba en el punto anterior.
+        else:                                                       # 8. Plantea el caso que no se cumpla , Si el elemento ya está en "lista_ya_analizados_VM":
+            lista_ya_analizados_VM.append(elemento)                 # 9. Adhiere a la lista de ya analizados el "elemento"-
+            lista_repeticiones_VM.append(1)                         # 10. agrega un index mas con valor = 1 por ser la primer unidad en entrar a la lista ya analizados, con valor != de las anteriormente analizadas.    
+    
+    
+        moda = lista_ya_analizados_VM[0]                            # A. Renombra Variables.
+        maximo = lista_repeticiones_VM[0]
+        
+        
+        for i, elemento in enumerate(lista_ya_analizados_VM):       # B. por cada iteracion "i" , cada vez que "elemento aparezca en "lista ya analizados", n la lista de los ya analizados, dale una numeracion index.
+            
+            if lista_repeticiones_VM[i] > maximo:                   # C. Si eliesimo valor de la lista "Repericiones  VM"   es mayor al resultado arrojado como Maximo.
+                moda = lista_ya_analizados_VM[i]                    # D. Pisa el valor guardado.
+                maximo = lista_repeticiones_VM[i]
+        
+        return moda, maximo                                         # E. Trae el resultado guadado por ultima vez en las variables "moda" y "maximo".
+
+
+
+#4 A la función del punto 3, agregar
+#  un parámetro más, 
+# que permita elegir si se requiere el menor o el mayor de los mas repetidos.
+
+
+
+def valor_modal2(lista, menor):                          # 1. define nueva formula para el valor con moda mas pequeña                    
+    '''
+    Esta función devuelve el valor modal y recibe de parámetros dos valores:
+    1-Una lista de números
+    2-Verdadero (por defecto) por si se requiere el mínimo de los más repetidos, o Falso si se requiere el máximo
+    '''
+    lista_ya_analizados_VM = []                         #llama a las listas creadas anteriormente
+    lista_repeticiones_VM = []
+    if len(lista) == 0:                                 # Valida entrada
+        return None
+    if (menor):                                         # si la variable "menor" posee valor = a "Verdadero".
+        lista.sort()                                    # Ordene la lista de FORMA ACENDENTE A DESENDENTE . El método sort() nos permite ordenar una lista en orden ascendente o descendente. Recibe dos argumentos "solo nombrados": reverse y key . reverse determina si la lista será ordenada de forma ascendente o descendente.
+    else:                                               # si v. "menor" posee valor  = a "false".
+        lista.sort(reverse=True)                        # Ordene la lista de FORMA DECENDENTE A ACENDENTE.
+    for elemento in lista:                              # Cada vez que aparezca "elemento" dentro de la lista hacer:  
+        if elemento in lista_ya_analizados_VM:              #si el elemento analizado se encuentra ya en la lista "ya analizados"
+            i = lista_ya_analizados_VM.index(elemento)      # define "i" como el index de la lista de los "ya analizados" que contiene a "elemento"
+            lista_repeticiones_VM[i] += 1                   # suma + 1 al indice "lista repeticiones".
+        else:                                               # Si el elemento analizado no se encuentra aun en la lista "ya analizadoa" hacer: 
+            lista_ya_analizados_VM.append(elemento)         # agregar a "lista ya analizados" el "elemento".
+            lista_repeticiones_VM.append(1)                 # sume +1 al indice del elemento recien agregado. registra esta primer aparicion del valor
+    moda = lista_ya_analizados_VM[0]                    #llama a valor ultimo almacenado en variable moda.
+    maximo = lista_repeticiones_VM[0]                   #llama a valor ultimo almacenado en variable maximo.
+    for i, elemento in enumerate(lista_ya_analizados_VM):   #por cada iteracion, cada vez que aparezca el "elemento" en la lista de los ya analizados, dale una numeracion.
+       if lista_repeticiones_VM[i] > maximo:                 # si el elemento dentro de la lista con index sub i es mayor al maximo  
+            moda = lista_ya_analizados_VM[i]                 # pise el dato de la moda y el maximo
+            maximo = lista_repeticiones_VM[i]                
+    return moda, maximo                                  #traiga los valores moda y max
+
+#5 Crear una función que convierta entre grados Celsius, 
+# Farenheit y Kelvin
+
+# Fórmula 1 : (°C × 9/5) + 32 = °F
+# Fórmula 2 : °C + 273.15 = °K
+# Debe recibir 3 parámetros: el valor, la medida de orígen y
+#  la medida de destino
+
+print('inserte valor, ya sea en K°, C° o F°: ')
+magnitud = input()
+print('Seleccione la unidad de medida original perteneciente al dato anteriormente ingresado. k / f / C')
+unidad_origen = input()
+print('Ahora seleccione la unidad final a devolver la conversion:k / f / C')
+unidad_destino = input()
+
+kelvin = str('k')
+celcius = str('c')
+farenheit = str('f')
+valor_original = int()
+
+
+
+def conversion_FKC(valor_original,unidad_origen,unidad_destino):
+    
+    if unidad_origen == celcius:
+
+        if unidad_destino == kelvin:
+            c_to_kelv = int(magnitud) + int(273.15)
+            print(str(magnitud) + ' Grados celcius equivalen a: ' + str(c_to_kelv) + ' Grados Kelvin. ')
+        
+        if unidad_destino == farenheit:
+            c_to_faren = (int(valor_original) * 9/5) + int(32)
+            print(str(magnitud) + ' Grados celcius equivalen a: ' + str(c_to_faren) + ' Grados Farenheit. ')
+    
+    #un poco mas allá de la consigna como ejercitacion:
+
+    #SIN QUERER CUMPLI CON EL PUNTO SIGUIENTE:
+    
+#6 Iterando una lista con los tres valores posibles de temperatura
+#  que recibe la función del punto 5,
+#  hacer un print para cada combinación de los mismos:
+
+    elif unidad_origen == kelvin:
+        
+        if unidad_destino == celcius:
+            kelv_to_cel = int(magnitud) - int(273.15)
+            print(str(magnitud) + ' Grados Kelvin equivalen a: ' + str(kelv_to_cel) + ' Grados Celcius. ')
+
+        if unidad_destino == farenheit:
+            kelv_to_far = (((int(magnitud) - int(273.15)) * 9/5) +32)
+            print(str(magnitud) + ' Grados Kelvin equivalen a: ' + str(kelv_to_far) + ' Grados Farenheit. ')
+    
+    elif unidad_origen == farenheit:
+
+        if unidad_destino == celcius:
+            farenh_to_cel = (int(magnitud) - 32) *5/9
+            print(str(magnitud) + ' Grados Farenheit equivalen a: ' + str(farenh_to_cel) + ' Grados Celcius. ')
+        
+        if unidad_destino == kelvin:
+            farenh_to_kel = ((int(magnitud) - 32) *5/9) + int(273.15)
+            print(str(magnitud) + ' Grados Farenheit equivalen a: ' + str(farenh_to_kel) + ' Grados Kelvin. ')
+
+conversion_FKC(valor_original,unidad_origen,unidad_destino)
+print('The end..')
+
+
+
+
+#7 Armar una función que devuelva el factorial de un número.
+#  Tener en cuenta que el usuario puede equivocarse y
+#  enviar de parámetro un número no entero o negativo 
+
+
+print('Escoja numero para devolver su factorial')
+numero_a_factorear = int(input())
+
+
+def factorial(numero_a_factorear):
+    if (numero_a_factorear > 1):
+        numero_a_factorear = numero_a_factorear * factorial(numero_a_factorear - 1)
+    return numero_a_factorear
+print(factorial(3))
+print(factorial(-2))
+print(factorial(1.23))
+print(factorial(6))
+print(factorial(numero_a_factorear))
+
