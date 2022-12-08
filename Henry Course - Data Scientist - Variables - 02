@@ -170,3 +170,4 @@ print(expresion)
 #Realizar una operación válida entre valores de tipo entero y string
 #Arroja error al igual que la anterior.
 
+ 
