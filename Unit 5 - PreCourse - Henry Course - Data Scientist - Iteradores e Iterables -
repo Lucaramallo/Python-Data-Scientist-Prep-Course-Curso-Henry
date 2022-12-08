@@ -68,76 +68,6 @@ list_impares2 = list()
 list_pares2 = list()
 
 for numero_2 in range(lim_range_inf2,lim_range_sup2):
-## Iteradores e iterables
-
-#1) A partir de una lista vacía, utilizar un ciclo while para cargar allí números negativos del -15 al -1
-
-#2) ¿Con un ciclo while sería posible recorrer la lista para imprimir sólo los números pares?
-
-print('Primera Iteracion...')
-
-print('Defina el limite Inferior del intervalo.')
-lim_range_inf = int(input())
-print('ok. Ahora defina el limite Superior del intervalo.')
-lim_range_sup = int(input())
-
-
-list_ = []
-numero_ = int(lim_range_inf)
-list_impares = list()
-list_pares = list()
-
-while numero_ != int():
-    
-    if (lim_range_inf <= numero_ <= lim_range_sup): 
-        list_.append(numero_)
-        print(str(numero_) +', Número cargado exitosamente, lo adherímos a la lista.')
-        print(list_)
-        espar_solo_si = bool(numero_ % 2 == 0)
-
-        if espar_solo_si :
-            print(str(numero_) + ', además es numero par!. Lo vamos a adherir a la lista de pares.')
-            list_pares.append(numero_)
-            print('Lista numeros pares')
-            print(list_pares)
-            numero_ += 1
-            
-        else:
-            print(str(numero_) + ', este no es par!. Lo vamos a adherir a la otra lista, lista impares.')
-            list_impares.append(numero_)
-            print('Lista numeros impares')
-            print(list_impares)
-            numero_ += 1
-            
-    else:
-        print( str(numero_) + ', No esta dentro del intervalo [' + str(lim_range_inf) + ', ' + str(lim_range_sup) + '].')
-        numero_ += 1
-        if numero_ > lim_range_sup:
-            break
-
-        
-
-print('Lista pares : ')
-print((list_pares))
-print('Lista impares:')
-print(list_impares)
-
-
-#3) Resolver el punto anterior sin utilizar un ciclo while
-
-print('ahora la segunda Iteracion...')
-print('Defina el limite Inferior del intervalo.')
-lim_range_inf2 = int(input())
-print('ok. Ahora defina el limite Superior del intervalo.')
-lim_range_sup2 = int(input())
-
-
-list_2 = []
-numero_2 = int(lim_range_inf2)
-list_impares2 = list()
-list_pares2 = list()
-
-for numero_2 in range(lim_range_inf2,lim_range_sup2):
 
     if (lim_range_inf2 <= numero_2 <= lim_range_sup2): 
         list_2.append(numero_2)
@@ -176,27 +106,27 @@ print(list_impares2)
 
 #4) Utilizar el iterable para recorrer sólo los primeros 3 elementos
 
-elemento = int()
 
 
-while (0 <= elemento <= 3):
-    item_lista_print_pares2 = list_pares2[elemento]
-    print(item_lista_print_pares2)
-    item_lista_print_impares2 = list_impares2[elemento]
+i = 0
+while (0 <= i <= 3):
+    item_lista_print_pares2 = list_pares2[i]
+    item_lista_print_impares2 = list_impares2[i]
+    i =+1
     print(item_lista_print_impares2)
-    elemento += 1
-    
+    print(item_lista_print_pares2)
+    break
 
 #5) Utilizar la función **enumerate** para obtener dentro del iterable, 
 # tambien el índice al que corresponde el elemento
 
 c = int()
 
-for elemento, c in enumerate(list_impares2):
-    print(elemento, c)
+for i, c in enumerate(list_impares2):
+    print(i, c)
     
-for elemento, d in enumerate(list_pares2):
-    print(elemento, c)
+for i, d in enumerate(list_pares2):
+    print(i, c)
 
 
 
@@ -207,11 +137,11 @@ for elemento, d in enumerate(list_pares2):
 
 lista_del_1_al_20 = [1,2,5,7,8,10,13,14,15,17,20]
 
-i = 0
-for i in range(lista_del_1_al_20[1],lista_del_1_al_20[-1]):
+key = 0
+for key in range(lista_del_1_al_20[1],lista_del_1_al_20[-1]):
 
-    while i != lista_del_1_al_20[i]:
-        lista_del_1_al_20.insert(i,i)
+    while key != lista_del_1_al_20[key]:
+        lista_del_1_al_20.insert(key,key)
         print('Nueva lista: ' + str(lista_del_1_al_20))
 
 print('process endded')
@@ -263,9 +193,9 @@ while(n < primeros):
 #cadena = 'Hola Mundo. Esto es una practica del lenguaje de programación Python'
 cadena =  'Hola Mundo. Esto es una practica del lenguaje de programación Python'
 
-for i, c in enumerate(cadena):
+for key, c in enumerate(cadena):
     if c == 'n':
-        print(i)
+        print(key)
 
 
 #11) Crear un diccionario e imprimir sus claves utilizando un iterador
@@ -279,8 +209,8 @@ dicc = {
 
 }
 
-for v in dicc:
-    print(v)
+for key in dicc:
+    print(list(key))
 
 
 
@@ -290,11 +220,11 @@ for v in dicc:
 cadena =  'Hola Mundo. Esto es una practica del lenguaje de programación Python'
 lista_de_la_cadena = []
 listado_letras_n_encontradas = []
-for i, c in enumerate(cadena):
-    lista_de_la_cadena.extend([i,c])
+for key, c in enumerate(cadena):
+    lista_de_la_cadena.extend([key,c])
     if c == 'n':
-        listado_letras_n_encontradas.extend([i,c])
-        print(i)
+        listado_letras_n_encontradas.extend([key,c])
+        print(key)
 
 print(lista_de_la_cadena)
 print(listado_letras_n_encontradas)
@@ -326,9 +256,9 @@ print (lis2)
 lis = [[1,2,3,4],'rojo','verde',[True,False,False],['uno','dos','tres']]
 
 cantidad = 0
-for elemento in lis:
-    if (type(elemento) == list):
-        cantidad += len(elemento)
+for i in lis:
+    if (type(i) == list):
+        cantidad += len(i)
     else:
         cantidad += 1
 print('La cantidad total de elementos es', cantidad)
@@ -342,7 +272,7 @@ type(lis)
 
 
 
-for indice, elemento in enumerate(lis):
-    if (type(elemento) != list):
-        lis[indice]=[elemento]
+for indice, i in enumerate(lis):
+    if (type(i) != list):
+        lis[indice]=[i]
 print(lis)
